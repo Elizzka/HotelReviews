@@ -8,7 +8,7 @@ namespace HotelReviews
 
         public event OpinionAddedDelegate OpinionAdded;
 
-        private List<float> opinion = new List<float>();
+        private List<float> opinions = new List<float>();
 
         public ReviewsInMemory(string hotelName)
             : base(hotelName)
@@ -19,7 +19,7 @@ namespace HotelReviews
         {
             if (opinion >= 0 && opinion <= 5)
             {
-                this.opinion.Add(opinion);
+                this.opinions.Add(opinion);
 
                 if (OpinionAdded != null)
                 {
@@ -37,11 +37,12 @@ namespace HotelReviews
         {
             if (float.TryParse(opinion, out float result))
             {
-                this.AddOpinion(result);
+                var value = float.Parse(opinion);
+                this.AddOpinion(value);
             }
             else
             {
-                throw new Exception("String is not float");
+                Console.WriteLine("String is not float");
             }
         }
 
@@ -49,19 +50,19 @@ namespace HotelReviews
         {
             switch (opinion)
             {
-                case 'E':   //excellent
+                case 'E':   
                     this.AddOpinion(5);
                     break;
-                case 'G':    //good
+                case 'G':    
                     this.AddOpinion(4);
                     break;
-                case 'A':     //average
+                case 'A':     
                     this.AddOpinion(3);
                     break;
-                case 'P':     //poor
+                case 'P':     
                     this.AddOpinion(2);
                     break;
-                case 'N':     //negative
+                case 'N':     
                     this.AddOpinion(1);
                     break;
                 default:
@@ -73,7 +74,7 @@ namespace HotelReviews
         {
             var statistics = new Statistics();
 
-            foreach (var opinion in this.opinion)
+            foreach (var opinion in this.opinions)
             {
                 statistics.AddOpinion(opinion);
             }
