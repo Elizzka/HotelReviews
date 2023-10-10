@@ -19,8 +19,6 @@ void ReviewsOpinionAdded(object sender, EventArgs args)
     Console.WriteLine("Dodano nową opinię");
 }
 
-reviews.AddOpinion("3");
-
 while (true)
 {
     Console.WriteLine("Dodaj kolejną opinię dla naszego hotelu");

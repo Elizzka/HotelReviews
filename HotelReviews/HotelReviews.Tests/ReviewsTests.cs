@@ -62,10 +62,10 @@ namespace HotelReviews.Tests
         public void WhenGetStatisticsShouldReturnAverageLetter2()
         {
             var reviews = new ReviewsInMemory("Hotel Per³a");
-            reviews.AddOpinion(1);
-            reviews.AddOpinion(2);
-            reviews.AddOpinion(3);
-            reviews.AddOpinion(2);
+            reviews.AddOpinion('N');
+            reviews.AddOpinion('P');
+            reviews.AddOpinion('A');
+            reviews.AddOpinion('P');
 
             var statistics = reviews.GetStatistics();
 
