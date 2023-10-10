@@ -1,5 +1,4 @@
 ﻿using HotelReviews;
-;
 
 Console.WriteLine("Witamy w programie, w którym możesz wystawić opinię dla hotelu: Perła.");
 Console.WriteLine("--------------------------------------------");
@@ -15,14 +14,12 @@ Console.WriteLine("Po dodaniu opinii naciśnij '-' i wyświetl ocenę najwyższ�
 var reviews = new ReviewsInMemory("Hotel Perła");
 reviews.OpinionAdded += ReviewsOpinionAdded;
 
-reviews.AddOpinion("3");
-reviews.AddOpinion(2);
-reviews.AddOpinion('E');
 void ReviewsOpinionAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową opinię");
 }
 
+reviews.AddOpinion("3");
 
 while (true)
 {

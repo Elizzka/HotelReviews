@@ -4,7 +4,7 @@
     {
         public delegate void OpinionAddedDelegate(object sender, EventArgs args);
 
-        public event OpinionAddedDelegate OpinionAdded;
+        public abstract event OpinionAddedDelegate OpinionAdded;
 
         public ReviewsBase(string hotelName)
         {

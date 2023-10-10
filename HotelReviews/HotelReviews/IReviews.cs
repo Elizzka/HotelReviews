@@ -2,6 +2,8 @@
 {
     public interface IReviews
     {
+        public delegate void OpinionAddedDelegate(object sender, EventArgs args);
+
         public string HotelName { get; }
 
         public void AddOpinion(float grade);

@@ -4,11 +4,9 @@ namespace HotelReviews
 {
     public class ReviewsInMemory : ReviewsBase
     {
-        public delegate void OpinionAddedDelegate(object sender, EventArgs args);
+        public override event OpinionAddedDelegate OpinionAdded;
 
-        public event OpinionAddedDelegate OpinionAdded;
-
-        private List<float> opinions = new List<float>();
+        private List<float> opinions = new();
 
         public ReviewsInMemory(string hotelName)
             : base(hotelName)
@@ -19,7 +17,7 @@ namespace HotelReviews
         {
             if (opinion >= 0 && opinion <= 5)
             {
-                this.opinions.Add(opinion);
+                opinions.Add(opinion);
 
                 if (OpinionAdded != null)
                 {
@@ -37,8 +35,11 @@ namespace HotelReviews
         {
             if (float.TryParse(opinion, out float result))
             {
-                var value = float.Parse(opinion);
-                this.AddOpinion(value);
+                this.AddOpinion(result);
+            }
+            else if (char.TryParse(opinion, out char CharResult))
+            {
+                this.AddOpinion(CharResult);
             }
             else
             {
@@ -51,19 +52,19 @@ namespace HotelReviews
             switch (opinion)
             {
                 case 'E':   
-                    this.AddOpinion(5);
+                    AddOpinion(5);
                     break;
                 case 'G':    
-                    this.AddOpinion(4);
+                    AddOpinion(4);
                     break;
                 case 'A':     
-                    this.AddOpinion(3);
+                    AddOpinion(3);
                     break;
                 case 'P':     
-                    this.AddOpinion(2);
+                    AddOpinion(2);
                     break;
                 case 'N':     
-                    this.AddOpinion(1);
+                    AddOpinion(1);
                     break;
                 default:
                     throw new Exception("Wrong letter");

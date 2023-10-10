@@ -2,9 +2,7 @@
 {
     public class ReviewsInFile : ReviewsBase
     {
-        public delegate void OpinionAddedDelegate(object sender, EventArgs args);
-
-        public event OpinionAddedDelegate OpinionAdded;
+        public override event OpinionAddedDelegate OpinionAdded;
 
         private const string fileName = "reviews.txt";
 
@@ -39,6 +37,10 @@
             {
                 this.AddOpinion(result);
             }
+            else if (char.TryParse(opinion, out char CharResult))
+            {
+                this.AddOpinion(CharResult);
+            }
             else
             {
                 throw new Exception("String is not float");
@@ -50,19 +52,19 @@
             switch (opinion)
             {
                 case 'E':   
-                    this.AddOpinion(5);
+                    AddOpinion(5);
                     break;
                 case 'G':    
-                    this.AddOpinion(4);
+                    AddOpinion(4);
                     break;
                 case 'A':     
-                    this.AddOpinion(3);
+                    AddOpinion(3);
                     break;
                 case 'P':     
-                    this.AddOpinion(2);
+                    AddOpinion(2);
                     break;
                 case 'N':     
-                    this.AddOpinion(1);
+                    AddOpinion(1);
                     break;
                 default:
                     throw new Exception("Wrong letter");

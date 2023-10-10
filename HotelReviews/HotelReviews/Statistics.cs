@@ -25,13 +25,13 @@
             {
                 switch (this.Average)
                 {
-                    case var average when average >= 5 :
+                    case var average when Average >= 5 :
                         return 'E';
-                    case var average when average >= 4:
+                    case var average when Average >= 4:
                         return 'G';
-                    case var average when average >= 3:
+                    case var average when Average >= 3:
                         return 'A';
-                    case var average when average >= 2:
+                    case var average when Average >= 2:
                         return 'P';
                     default:
                         return 'N';
