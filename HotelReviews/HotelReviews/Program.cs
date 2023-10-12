@@ -1,27 +1,27 @@
 ﻿using HotelReviews;
 
-Console.WriteLine("Witamy w programie, w którym możesz wystawić opinię dla hotelu: Perła.");
+Console.WriteLine("Welcome to the program where you can leave a review for the hotel: Perła.");
 Console.WriteLine("--------------------------------------------");
 Console.WriteLine();
-Console.WriteLine("Podaj ocenę od 1 do 5 lub podaj literę z poniższej listy: ");
+Console.WriteLine("Provide a rating from 1 to 5 or enter a letter from the list below: ");
 Console.WriteLine("'E' - excellent");
 Console.WriteLine("'G' - good");
 Console.WriteLine("'A' - average");
 Console.WriteLine("'P' - poor");
 Console.WriteLine("'N' - negative");
-Console.WriteLine("Po dodaniu opinii naciśnij '-' i wyświetl ocenę najwyższą, najniższą i średnią wszystkich ocen. ");
+Console.WriteLine("After adding a review, press '-' and display the highest, lowest and average rating of all ratings. ");
 
-var reviews = new ReviewsInMemory("Hotel Perła");
+var reviews = new ReviewsInFile("Hotel Perła");
 reviews.OpinionAdded += ReviewsOpinionAdded;
 
 void ReviewsOpinionAdded(object sender, EventArgs args)
 {
-    Console.WriteLine("Dodano nową opinię");
+    Console.WriteLine("A new opinion has been added");
 }
 
 while (true)
 {
-    Console.WriteLine("Dodaj kolejną opinię dla naszego hotelu");
+    Console.WriteLine("Add another review for our hotel");
     var input = Console.ReadLine();
     if (input == "-")
     {
@@ -39,7 +39,8 @@ while (true)
 }
 
 var statistics = reviews.GetStatistics();
+Console.WriteLine("Statistics for the hotel:");
 Console.WriteLine($"Average: {statistics.Average:N2}");
-Console.WriteLine($"Average: {statistics.AverageLetter}");
+Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");

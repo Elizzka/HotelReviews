@@ -41,7 +41,7 @@ namespace HotelReviews.Tests
 
             var statistics = reviews.GetStatistics();
 
-            Assert.AreEqual(3,5, statistics.Average);
+            Assert.AreEqual(3, 5, statistics.Average);
         }
 
         [Test]
@@ -71,6 +71,5 @@ namespace HotelReviews.Tests
 
             Assert.AreEqual('P', statistics.AverageLetter);
         }
-
     }
 }

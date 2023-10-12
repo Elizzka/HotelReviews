@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace HotelReviews
+﻿namespace HotelReviews
 {
     public class ReviewsInMemory : ReviewsBase
     {
@@ -51,19 +49,19 @@ namespace HotelReviews
         {
             switch (opinion)
             {
-                case 'E':   
+                case 'E':
                     AddOpinion(5);
                     break;
-                case 'G':    
+                case 'G':
                     AddOpinion(4);
                     break;
-                case 'A':     
+                case 'A':
                     AddOpinion(3);
                     break;
-                case 'P':     
+                case 'P':
                     AddOpinion(2);
                     break;
-                case 'N':     
+                case 'N':
                     AddOpinion(1);
                     break;
                 default:
