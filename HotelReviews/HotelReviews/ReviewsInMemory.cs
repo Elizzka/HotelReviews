@@ -1,6 +1,6 @@
 ﻿namespace HotelReviews
 {
-    public class ReviewsInMemory : ReviewsBase
+    public abstract class ReviewsInMemory : ReviewsBase
     {
         public override event OpinionAddedDelegate OpinionAdded;
 
@@ -29,45 +29,9 @@
 
         }
 
-        public override void AddOpinion(string opinion)
-        {
-            if (float.TryParse(opinion, out float result))
-            {
-                this.AddOpinion(result);
-            }
-            else if (char.TryParse(opinion, out char CharResult))
-            {
-                this.AddOpinion(CharResult);
-            }
-            else
-            {
-                Console.WriteLine("String is not float");
-            }
-        }
+        public new abstract void AddOpinion(string opinion);
 
-        public override void AddOpinion(char opinion)
-        {
-            switch (opinion)
-            {
-                case 'E':
-                    AddOpinion(5);
-                    break;
-                case 'G':
-                    AddOpinion(4);
-                    break;
-                case 'A':
-                    AddOpinion(3);
-                    break;
-                case 'P':
-                    AddOpinion(2);
-                    break;
-                case 'N':
-                    AddOpinion(1);
-                    break;
-                default:
-                    throw new Exception("Wrong letter");
-            }
-        }
+        public new abstract void AddOpinion(char opinion);
 
         public override Statistics GetStatistics()
         {
