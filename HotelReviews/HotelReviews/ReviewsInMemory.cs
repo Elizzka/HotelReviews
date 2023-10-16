@@ -1,6 +1,6 @@
 ﻿namespace HotelReviews
 {
-    public abstract class ReviewsInMemory : ReviewsBase
+    public class ReviewsInMemory : ReviewsBase
     {
         public override event OpinionAddedDelegate OpinionAdded;
 
@@ -26,12 +26,7 @@
             {
                 throw new Exception("invalid opinion value");
             }
-
         }
-
-        public new abstract void AddOpinion(string opinion);
-
-        public new abstract void AddOpinion(char opinion);
 
         public override Statistics GetStatistics()
         {

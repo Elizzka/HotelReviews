@@ -1,6 +1,6 @@
 ﻿namespace HotelReviews
 {
-    public abstract class ReviewsInFile : ReviewsBase
+    public class ReviewsInFile : ReviewsBase
     {
         public override event OpinionAddedDelegate OpinionAdded;
 
@@ -31,21 +31,11 @@
             }
         }
 
-        public new abstract void AddOpinion(string opinion);
-
-        public new abstract void AddOpinion(char opinion);
-
         public override Statistics GetStatistics()
         {
-            var statistics = new Statistics();
-            var opinionsFromFile = this.ReadOpinionsFromFile();
-
-            foreach (var opinion in opinionsFromFile)
-            {
-                statistics.AddOpinion(opinion);
-            }
-
-            return statistics;
+            var opinionsFromFile = ReadOpinionsFromFile();
+            var result = this.CalculateStatistics(opinionsFromFile);
+            return result;
         }
 
         private List<float> ReadOpinionsFromFile()
@@ -61,11 +51,21 @@
                         var number = float.Parse(line);
                         opinions.Add(number);
                         line = reader.ReadLine();
-
                     }
                 }
             }
             return opinions;
+        }
+
+        private Statistics CalculateStatistics(List<float> opinions)
+        {
+            var statistics = new Statistics();
+
+            foreach (var opinion in opinions)
+            {
+                statistics.AddOpinion(opinion);
+            }
+            return statistics;
         }
     }
 }

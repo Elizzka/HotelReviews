@@ -9,7 +9,7 @@ Console.WriteLine("'G' - good");
 Console.WriteLine("'A' - average");
 Console.WriteLine("'P' - poor");
 Console.WriteLine("'N' - negative");
-Console.WriteLine("After adding a review, press '-' and display the highest, lowest and average rating of all ratings. ");
+Console.WriteLine("After adding a review, press '=' and display the highest, lowest and average rating of all ratings. ");
 
 var reviews = new ReviewsInFile("Hotel Perła");
 reviews.OpinionAdded += ReviewsOpinionAdded;
@@ -23,11 +23,10 @@ while (true)
 {
     Console.WriteLine("Add another review for our hotel");
     var input = Console.ReadLine();
-    if (input == "-")
+    if (input == "=")
     {
         break;
     }
-
     try
     {
         reviews.AddOpinion(input);
@@ -38,7 +37,7 @@ while (true)
     }
 }
 
-var statistics = reviews.GetStatistics();
+Statistics statistics = reviews.GetStatistics();
 Console.WriteLine("Statistics for the hotel:");
 Console.WriteLine($"Average: {statistics.Average:N2}");
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");

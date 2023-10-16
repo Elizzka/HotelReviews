@@ -17,18 +17,18 @@
 
         public void AddOpinion(string opinion)
         {
-                if (float.TryParse(opinion, out float result))
-                {
-                    this.AddOpinion(result);
-                }
-                else if (char.TryParse(opinion, out char CharResult))
-                {
-                    this.AddOpinion(CharResult);
-                }
-                else
-                {
-                    throw new Exception("String is not float");
-                }
+            if (float.TryParse(opinion, out float result))
+            {
+                AddOpinion(result);
+            }
+            else if (char.TryParse(opinion, out char CharResult))
+            {
+                AddOpinion(CharResult);
+            }
+            else
+            {
+                throw new Exception("String is not float");
+            }
         }
 
         public void AddOpinion(char opinion)

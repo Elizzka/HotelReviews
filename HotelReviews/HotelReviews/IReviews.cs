@@ -6,11 +6,11 @@
 
         public string HotelName { get; }
 
-        public void AddOpinion(float grade);
+        public void AddOpinion(float opinion);
 
-        public void AddOpinion(string grade);
+        public void AddOpinion(string opinion);
 
-        public void AddOpinion(char grade);
+        public void AddOpinion(char opinion);
 
         Statistics GetStatistics();
     }
