@@ -4,7 +4,7 @@
     {
         public override event OpinionAddedDelegate OpinionAdded;
 
-        private const string fileName = "reviews.txt";
+        private const string fileName = "opinions.txt";
 
         public ReviewsInFile(string hotelName)
             : base(hotelName)
@@ -18,11 +18,11 @@
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(opinion);
+                }
 
-                    if (OpinionAdded != null)
-                    {
-                        OpinionAdded(this, new EventArgs());
-                    }
+                if (OpinionAdded != null)
+                {
+                    OpinionAdded(this, new EventArgs());
                 }
             }
             else
@@ -33,7 +33,7 @@
 
         public override Statistics GetStatistics()
         {
-            var opinionsFromFile = ReadOpinionsFromFile();
+            var opinionsFromFile = this.ReadOpinionsFromFile();
             var result = this.CalculateStatistics(opinionsFromFile);
             return result;
         }

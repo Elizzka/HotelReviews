@@ -37,7 +37,8 @@ while (true)
     }
 }
 
-Statistics statistics = reviews.GetStatistics();
+//Statistics statistics = reviews.GetStatistics();
+var statistics = ((ReviewsInFile)reviews).GetStatistics();
 Console.WriteLine("Statistics for the hotel:");
 Console.WriteLine($"Average: {statistics.Average:N2}");
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");

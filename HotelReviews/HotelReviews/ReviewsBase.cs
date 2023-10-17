@@ -19,11 +19,11 @@
         {
             if (float.TryParse(opinion, out float result))
             {
-                AddOpinion(result);
+                this.AddOpinion(result);
             }
             else if (char.TryParse(opinion, out char CharResult))
             {
-                AddOpinion(CharResult);
+                this.AddOpinion(CharResult);
             }
             else
             {
